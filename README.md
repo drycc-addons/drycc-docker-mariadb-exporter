@@ -4,6 +4,6 @@
 
 > MySQL Server Exporter gathers MySQL Server metrics for Prometheus consumption.
 
-[Overview of MySQL Server Exporter](https://github.com/prometheus/mysqld_exporter)
+[Overview of MySQL Server Exporter](https://github.com/drycc-addons/drycc-docker-mysqld-exporter)
 
-Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+This project has been forked from [mysqld_exporter](https://github.com/prometheus/mysqld_exporter),  We mainly modified the dockerfile in order to build the images of amd64 and arm64 architectures. 

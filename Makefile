@@ -1,14 +1,12 @@
 # If DRYCC_REGISTRY is not set, try to populate it from legacy DEV_REGISTRY
 DRYCC_REGISTRY ?= $(DEV_REGISTRY)
 IMAGE_PREFIX ?= drycc-addons
-COMPONENT ?= drycc-docker-mysqld-exporter
+COMPONENT ?= mysqld-exporter
 SHORT_NAME ?= $(COMPONENT)
 PLATFORM ?= linux/amd64,linux/arm64
 MYSQLD_EXPORTER_VERSION ?= 0.14.0
 
 include versioning.mk
-
-SHELL_SCRIPTS = $(shell find ${MYSQLD_EXPORTER_VERSION}/debian/ -name '*.sh') $(wildcard *.sh)
 
 DEV_ENV_IMAGE := ${DRYCC_REGISTRY}/drycc/go-dev
 DEV_ENV_WORK_DIR := /opt/drycc/go/src/${REPO_PATH}
@@ -22,11 +20,6 @@ check-docker:
 	  echo "Missing \`docker\` client which is required for development"; \
 	  exit 2; \
 	fi
-
-test: test-style
-
-test-style:
-	${DEV_ENV_CMD} shellcheck $(SHELL_SCRIPTS)
 
 build: docker-build
 
